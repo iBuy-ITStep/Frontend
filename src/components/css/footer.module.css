@@ -1,0 +1,11 @@
+.cleanTable :global(.ant-table-tbody > tr > td)
+/*.cleanTable :global(.ant-table-thead > tr > th) */
+{
+    border: none !important;
+    padding-top: 0 !important;
+    padding-bottom: 1 !important;
+}
+
+.cleanTable :global(.ant-table-tbody > tr:hover > td) {
+    background: transparent !important;
+}
