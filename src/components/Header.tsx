@@ -39,7 +39,7 @@ const Header = () => {
 
     const items: MenuItemWithPath[] = isAuth
         ? [
-            { key: '1', label: 'My Account', path: 'account' },
+            // { key: '1', label: 'My Account', path: 'account' },
             { key: '2', label: 'Your Orders', path: 'orders' },
             {
                 key: '3',
