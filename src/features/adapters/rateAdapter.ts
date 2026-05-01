@@ -8,7 +8,7 @@ export const ratesToAverageAdapter = (product: Product | undefined): number => {
         product.rating3Count * 3 +
         product.rating4Count * 4 +
         product.rating5Count * 5) / totalRates).toFixed(2));
-    return result;
+    return result ?? 0;
 }
 
 export const totalCustomersRatings = (product: Product | undefined):number => {

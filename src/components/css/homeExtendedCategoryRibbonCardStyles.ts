@@ -9,12 +9,13 @@ export const hecrdStyles: CssObjectType = {
         rowGap: 10,
     },
     cardImage:{
-        height: "9vh",
+        width: 150,
     },
     card: {
         padding: "0",
         boxShadow: "0px 0px 11px 1px rgba(0,0,0,0.05)",
         overflow: "hidden",
+        width: "60%",
 
     },
     container:{

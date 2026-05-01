@@ -28,7 +28,7 @@ export const imageApi = api.injectEndpoints({
             }),
         }),
 
-        uploadImage: builder.mutation<any, ImageDto>({
+        uploadImage: builder.mutation<ImageDetailsDto, ImageDto>({
             query: (formData) => ({
                 url: "images/upload",
                 method: "POST",
@@ -38,7 +38,7 @@ export const imageApi = api.injectEndpoints({
                 } : {}
             })
         }),
-        uploadPreviewImage: builder.mutation<any, ImageDto>({
+        uploadPreviewImage: builder.mutation<ImageDetailsDto, ImageDto>({
             query: (formData) => ({
                 url: "images/upload/preview",
                 method: "POST",

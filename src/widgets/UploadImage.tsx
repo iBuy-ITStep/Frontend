@@ -3,6 +3,7 @@ import type { UploadProps } from "antd";
 import { FaUpload } from "react-icons/fa6";
 import { useState } from "react";
 import {useAllImagesQuery, useUploadImageMutation, useUploadPreviewImageMutation} from "../api/imageApiSlice.ts";
+import {useLazyProductByIdQuery, useUpdateProductMutation} from "../api/productApiSlice.ts";
 
 export const UploadImage = () => {
     const [productId, setProductId] = useState<number | null>(null);
@@ -10,13 +11,26 @@ export const UploadImage = () => {
     const [uploadPreviewImage, { isLoading: isLoadingPreveiw }] = useUploadPreviewImageMutation();
     const [isPreview, setIsPreview] = useState(false);
     const {refetch} = useAllImagesQuery()
+    const [trigger] = useLazyProductByIdQuery();
+    const [updateProduct] = useUpdateProductMutation();
     const handleAction = async (file: File) => {
         const formData = new FormData();
         formData.append("file", file);
 
         try {
             if (isPreview) {
-                await uploadPreviewImage({file:formData, productId}).unwrap();
+
+                const image = await uploadPreviewImage({file:formData, productId}).unwrap();
+                if(productId) {
+                    const data = await trigger(productId).unwrap();
+
+                    if(data){
+                       await updateProduct({
+                            ...data,
+                           newPreviewImageId: image.id,
+                        }).unwrap();
+                    }
+                }
             }else{
                 await uploadImage({file:formData, productId}).unwrap();
             }

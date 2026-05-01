@@ -11,6 +11,6 @@ export type ProductImageProps = {
 export const CustomImage = ({id, name, styles}: ProductImageProps) => {
     const {data: imageUrl} = useImageByIdQuery(id);
     return (
-        <Image src={imageUrl} style={styles} alt={name} preview={false} />
+        <Image src={imageUrl} style={styles} alt={name} preview={false}  />
     )
 }

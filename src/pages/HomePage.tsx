@@ -37,11 +37,12 @@ export const HomePage = () => {
         <Flex vertical style={{ background: "#f5f5f5" }}>
             <CategoryRibbon />
 
-            {/* HERO */}
-            <Flex vertical style={{ margin: "0 auto", width: "100%" }}>
-                <Carousel autoplay arrows dots={false}>
+            <Flex vertical>
+                <Carousel autoplay arrows dots={false} style={{width:'90%', margin:'auto'}}>
                     {homeBannerImages.map((banner, i) => (
-                        <CustomImage id={banner} name={banner} key={i} />
+                        <div style={{width: "100%"}} key={i} >
+                            <CustomImage id={banner} name={banner} styles={{borderRadius: 10}}/>
+                        </div>
                     ))}
                 </Carousel>
 
@@ -50,7 +51,6 @@ export const HomePage = () => {
                 </div>
             </Flex>
 
-            {/* CATEGORY STRIP */}
             <div style={{ margin: "40px auto", width: "100%" }}>
                 <Carousel autoplay dots={false} slidesToShow={5}>
                     {data?.map((cat) => (
@@ -65,7 +65,7 @@ export const HomePage = () => {
             </div>
 
             {/* BANNER */}
-            <div style={{ position: "relative", margin: "40px auto"}}>
+            <div style={{ position: "relative"}}>
                 <Text style={homeStyles.anywhereText}>
                     International Shopping Platform for Imported Products Across Anywhere
                 </Text>
@@ -73,8 +73,8 @@ export const HomePage = () => {
             </div>
 
             {/* EXTENDED CATEGORIES */}
-            <div style={{  margin: "40px auto", width: "100%" }}>
-                <Carousel autoplay slidesToShow={3} dots={false}>
+            <div style={{ margin: "40px 0", width: "100%" }}>
+                <Carousel autoplay slidesToShow={4} dots={false}>
                     {data
                         ?.filter((c) => c.children.length > 0)
                         .map((cat) => (
@@ -112,7 +112,7 @@ export const HomePage = () => {
                         {/* LEFT GRID */}
                         <Col xs={24} md={12}>
                             <Row gutter={[12, 12]}>
-                                {products.items.slice(0, 4).map((p, i) => (
+                                {products.items.slice(0, 2).map((p, i) => (
                                     <Col span={12} key={i}>
                                         <NewlyProductsCard
                                             title={p.name}
@@ -132,7 +132,7 @@ export const HomePage = () => {
 
                     {/* BOTTOM ROW */}
                     <Row gutter={[12, 12]} style={{ marginTop: 12 }}>
-                        {products.items.slice(4, 6).map((p, i) => (
+                        {products.items.slice(2, 6).map((p, i) => (
                             <Col xs={12} md={6} key={i}>
                                 <NewlyProductsCard
                                     title={p.name}

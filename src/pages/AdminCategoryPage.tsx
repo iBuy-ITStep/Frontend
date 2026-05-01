@@ -10,7 +10,6 @@ import {useState} from "react";
 import {categoriesToDataTableAdapter} from "../features/adapters/categoryAdapter.ts";
 import Title from "antd/lib/typography/Title";
 import type {ColumnsType} from "antd/es/table";
-import type {RegisterDto} from "../api/dto/RegisterDto.ts";
 
 type RecordCategoryType = {
     id: number;
@@ -96,11 +95,11 @@ export const AdminCategoryPage = () => {
     return <Flex vertical>
         <Title>Category Admin Page</Title>
         <Form name="category" onFinish={onCreate}>
-            <Form.Item<Partial<RegisterDto>> name={"email"}>
-                <Input placeholder="Email"/>
+            <Form.Item<Partial<CategoryDto>> name={"parentId"}>
+                <Input placeholder="Parent Id"/>
             </Form.Item>
-            <Form.Item<Partial<RegisterDto>>
-                name={"password"}
+            <Form.Item<Partial<CategoryDto>>
+                name={"name"}
                 rules={[{required: true, message: "Name is required"}]}
             >
                 <Input placeholder="Name"/>

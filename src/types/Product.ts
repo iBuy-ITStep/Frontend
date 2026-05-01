@@ -4,6 +4,7 @@ export type Product = {
     description: string;
     price: number;
     previewImageId?: string;
+    newPreviewImageId?: string;
     dateOfCreation: Date;
     categoryId: number;
     categoryName: string;

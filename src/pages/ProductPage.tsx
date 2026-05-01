@@ -136,7 +136,7 @@ export const ProductPage = () => {
                             onChange={handleRateChange}
 
                         />
-                        <Title level={4} >{ratesToAverageAdapter(product)}</Title>
+                        <Title level={5} >{ratesToAverageAdapter(product) > 0 ? ratesToAverageAdapter(product) : "No rating"}</Title>
                     </Flex>
                 </Flex>
                 <Flex
@@ -184,7 +184,7 @@ export const ProductPage = () => {
                 <Flex gap={12}>
                     {isAuth ?
                         <>
-                            <Button type="primary" size="large" onClick={addToCart} loading={addLoading}>
+                            <Button type="primary" size="large" onClick={addToCart} loading={addLoading} disabled={product?.stockQuantity == 0}>
                                 Add to Cart
                             </Button>
 

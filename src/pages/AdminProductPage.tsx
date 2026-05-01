@@ -25,6 +25,7 @@ import {selectBrandsAdapter} from "../features/adapters/brandAdapter.ts";
 import {useRowCategoriesQuery} from "../api/categoryApiSlice.ts";
 import {useBrandsQuery} from "../api/brandApiSlice.ts";
 import {UploadImage} from "../widgets/UploadImage.tsx";
+import {Link} from "react-router";
 
 export const AdminProductPage = () => {
     const { data, isLoading, refetch } = useProductsQuery(undefined);
@@ -99,7 +100,7 @@ export const AdminProductPage = () => {
         {
             title: "Name",
             dataIndex: "name",
-            render: (_, record) =>  record.name.sliceIfMoreThen(40, "..."),
+            render: (_, record) =>  <Link to={`/products/${record.id}`}>{record.name.sliceIfMoreThen(40, "...")}</Link>,
         },
         {
             title: "Description",

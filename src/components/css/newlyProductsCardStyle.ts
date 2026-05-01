@@ -5,7 +5,8 @@ export const newlyProductsCardStyle: CssObjectType = {
         background: "#fff",
         borderRadius: 10,
         padding: 10,
-        height: "30vh",
+        height: "auto",
+        minHeight: "35vh",
         boxShadow: "0px 0px 11px 1px rgba(0,0,0,0.1)",
     },
     title: {
