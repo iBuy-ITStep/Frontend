@@ -6,7 +6,7 @@ export default defineConfig({
   plugins: [react(), tailwindcss()],
   server: {
     allowedHosts: [
-        "app.smart-onion.com"
+        "smart-onion.com"
     ]
   }
 })

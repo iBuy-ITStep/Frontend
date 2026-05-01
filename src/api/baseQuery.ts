@@ -8,7 +8,7 @@ import type {LoginResultDto} from "./dto/LoginResultDto.ts";
 
 const baseQuery = fetchBaseQuery({
     baseUrl: import.meta.env.VITE_API_BASE_URL,
-    //credentials: 'include',
+    // credentials: 'include',
     prepareHeaders: (headers, {getState}) => {
         let token = (getState() as RootState).user?.token;
         if(!token) {
