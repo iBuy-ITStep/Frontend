@@ -7,7 +7,7 @@ import {
 import Title from "antd/lib/typography/Title";
 import Text from "antd/es/typography/Text";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router";
+import {useParams, useSearchParams} from "react-router";
 
 import { PriceRange } from "../widgets/PriceRange";
 import { ShopCategoryCard } from "../components/ShopCategoryCard";
@@ -30,11 +30,14 @@ export const CategoriesPage = () => {
 
     const { data: categories, isLoading } = useCategoriesQuery();
     const { categoryId } = useParams();
+    const [searchParam] = useSearchParams()
     const [queryOptions, setQueryOptions] = useState<ProductQuery>({
-        categoryId: Number(categoryId),
-        currentPage: 1,
+        categoryId: Number(searchParam),
     });
-    const { data: products, isLoading: productsLoading} = useProductsQuery(queryOptions);
+    const searchValue = searchParam.get("searchValue");
+    const { data: products, isLoading: productsLoading} = useProductsQuery(
+        searchValue ? {searchPropertyName: "Name", searchTerm: searchValue} : queryOptions
+    );
     const [selectedCategory, setSelectedCategory] =
         useState<Category | undefined>();
 
