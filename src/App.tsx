@@ -20,6 +20,7 @@ import {ConfirmEmailPage} from "./pages/ConfirmEmailPage.tsx";
 import {ForgotPasswordPage} from "./pages/ForgotPasswordPage.tsx";
 import {ResetPasswordPage} from "./pages/ResetPasswordPage.tsx";
 import {AdminOrdersPage} from "./pages/AdminOrdersPage.tsx";
+import {NotFoundPage} from "./pages/NotFoundPage.tsx";
 function App() {
   return (
         <>
@@ -55,6 +56,7 @@ function App() {
                                 <Route path={"orders"} element={<AdminOrdersPage />} />
                             </Route>
                         </Route>
+                        <Route path={"/*"} element={<NotFoundPage />} />
                 </Route>
             </Route>
 
